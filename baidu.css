@@ -1,0 +1,63 @@
+*{
+	text-decoration:none;
+	margin:0;
+	padding:0;
+	background-color:white;
+}
+header{
+	width:100%;
+	height:78px;
+}
+header ul{
+	float:right;
+	margin-top:22px;
+	margin-right:14px;
+}
+header ul li{
+	display:inline-block;
+}
+header ul li a{
+	color:black;
+	font-weight: 700;
+	line-height: 24px;
+	margin-left:20px;
+	font-size:13px;
+	text-decoration: underline;
+}
+header ul li a:hover{
+	
+}
+article{
+	width:100%;
+	height:519px;
+	text-align: center;
+}
+article #searchcontent{
+	width:540px;
+	height:36px;
+}
+article #searchbut{
+	display:inline-block;
+	width:100px;
+	height:36px;
+	background:#3385ff;
+	color:white;
+	border:none;
+}
+article #search{
+	font-size:0;
+}
+article #code{
+	margin-top:71px;
+	width:100%;
+	height:202px;
+}
+article #code .title{
+	font-size:16px;
+	color:#333333;
+}
+article #code .sub-title{
+	font-size:14px;
+	color:#999999;
+}
+
