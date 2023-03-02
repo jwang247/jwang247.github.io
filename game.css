@@ -1,0 +1,28 @@
+body {
+	text-align: center;
+	position: relative;
+}
+  #area1, #area2, #area3, #area4 {
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+  }
+  #area1, #area2, #area3, #area4{
+	  display: inline-block;
+  }
+  #area1 {
+    background-color: #F0F0F0;
+  }
+  #area2 {
+    background-color: #DDDDDD;
+  }
+  #area3 {
+	  background-color: aliceblue;
+  }
+  #area4{
+	  background-color: azure;
+  }
+  .num-input {
+    width: 30px;
+  }
