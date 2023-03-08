@@ -110,19 +110,8 @@
 	  
 	  if(takeNum === 0)                                        //判断能否拿了达成秘籍
 	  {
-		  for(var i = 0; i < 4; i++)
-		  {
-			  for(var j = 1; j <= arr[i] ; j++)
-			  {
-				  let arr = [n1, n2, n3, n4];
-				  arr[i] = arr[i] - j;
-				  if(findAny(arr))
-				  {
-					  area = i;
-					  takeNum = j;
-				  }
-			  }
-		  }
+		  area = take(n1, n2, n3, n4)[0];
+		  takeNum = take(n1, n2, n3, n4)[1];
 	  }
 	  
 	  if(area === 0)                                            //没有合适的拿取对象，随便拿一个
@@ -174,12 +163,31 @@
 		  last = n4;
 	  }
 	  
-	  document.getElementById("action").innerHTML = '小王从第'+areaWord+'区域中拿了一个,棋子由'+last+'个变为'+(last - takeNum)+'个';
+	  document.getElementById("action").innerHTML = '小王从第'+areaWord+'区域中拿了' + takeNum +'个,棋子由'+last+'个变为'+(last - takeNum)+'个';
 	  if(isWin(parseInt(area1.innerHTML), parseInt(area2.innerHTML), parseInt(area3.innerHTML), parseInt(area4.innerHTML)) === true)
 	  {
 	  	return;
 	  }
 	  playerCount++;
+  }
+  
+  let take = function(n1, n2, n3, n4)
+  {
+	  for(var i = 0; i < 4; i++)
+	  		  {
+	  			  let arr = [n1, n2, n3, n4];
+	  			  let tem = arr[i];
+	  			  for(var j = 1; j <= tem ; j++)
+	  			  {
+					  let arr = [n1, n2, n3, n4];
+	  				  arr[i] = arr[i] - j;
+	  				  if(findAny(arr))
+	  				  {
+	  					  return Array(i + 1, j);
+	  				  }
+	  			  }
+	  		  }
+	  				  return Array(0, 0);
   }
   
   let findWin = function(n1, n2, n3, n4){                                           //判断是否这次拿取能直接获胜，返回值是拿取的数量
