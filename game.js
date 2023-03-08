@@ -26,7 +26,12 @@
 	  }
   }
   
+  let isclick = true;
+  
   btn.addEventListener('click', function() {
+	  
+	if(isclick){
+	isclick = false;
     let n1 = parseInt(area1.innerHTML);
     let n2 = parseInt(area2.innerHTML);
 	let n3 = parseInt(area3.innerHTML);
@@ -48,12 +53,22 @@
 	{
 		area4.innerHTML = n4 - subNum;
 	}
+	else if((from.value === "1" && n1 < subNum)||(from.value === "2" && n2 < subNum)||(from.value === "3" && n3 < subNum)||(from.value === "4" && n4 < subNum))
+	{
+		alert("所选区域剩余棋子不足，请重新选择");
+		isclick = true;
+		return;
+	}
 	if(isWin(parseInt(area1.innerHTML), parseInt(area2.innerHTML), parseInt(area3.innerHTML), parseInt(area4.innerHTML)) === true)
 	{
 		return;
 	}
 	playerCount++;
 	setTimeout(ai2, 3000);
+	setTimeout(function(){
+	      isclick = true;
+	    }, 3000);
+	}
   });
   
   let ai = function()
@@ -170,6 +185,7 @@
 	  }
 	  playerCount++;
   }
+
   
   let take = function(n1, n2, n3, n4)
   {
