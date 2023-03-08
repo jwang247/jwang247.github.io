@@ -5,6 +5,8 @@
   let from = document.getElementById('from');
   let num = document.getElementById('num');
   let btn = document.getElementById('btn');
+  let music=document.getElementById("myAudio");
+  
   let playerCount = 0;                                                            //玩家计数器（用来判断当前是谁在操作）
   
   let isWin = function(n1, n2, n3, n4)                                            //判断输赢
@@ -283,3 +285,17 @@
 	  document.getElementById("action").innerHTML = '到您了';
   }
   restart.addEventListener("click", re);
+  
+  function playAudio(){
+    
+      var audio = document.getElementById("myAudio");
+   
+        if(audio.paused)
+	    {
+			audio.play();
+        }
+		else
+		{
+			audio.pause();
+		}
+   }
