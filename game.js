@@ -53,7 +53,7 @@
 		return;
 	}
 	playerCount++;
-	setTimeout(ai2, 3000);
+	setTimeout(ai2, 3500);
   });
   
   let ai = function()
