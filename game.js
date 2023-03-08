@@ -224,6 +224,11 @@
   
   let findAny = function(arr){
 	  arr.sort((a, b) => a - b);
+	  if(arr[0] === 0 && arr[1] === 1 && arr[2] === 1 && arr[3] === 1)
+	  {
+	  		  return true;
+	  }
+	  
 	  if(arr[0] === arr[1] && arr[2] === arr[3])                                             
 	  {
 		  return true;
@@ -232,11 +237,6 @@
 	  if(arr[0] === 0 && arr[1] === 1 && arr[2] === 2 && arr[3] === 3)                        
 	  {
 		  return true;
-	  }
-	  
-	  if(arr[0] === 0 && arr[1] === 1 && arr[2] === 1 && arr[3] === 1)
-	  {
-	  		  return true;
 	  }
 	  
 	  if(arr[0] === 0 && arr[1] === 1 && arr[2] === 4 && arr[3] === 5)
