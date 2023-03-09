@@ -1,6 +1,8 @@
 body {
 	text-align: center;
 	position: relative;
+	background-image:url('111.gif');
+	background-size: cover;
 }
   #area1, #area2, #area3, #area4 {
     width: 200px;
