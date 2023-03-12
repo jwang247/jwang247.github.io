@@ -7,7 +7,42 @@
   let btn = document.getElementById('btn');
   let music=document.getElementById("myAudio");
   
+  let arrNum = [1, 3, 5, 7];
+  let arr = [area1, area2, area3, area4];
+  
   let playerCount = 0;                                                            //玩家计数器（用来判断当前是谁在操作）
+  
+  
+  let draw = function(){
+	  for(let i=0; i<arr.length; i++)
+	  {
+		  while(arr[i].lastChild!=null)
+		  {
+			  arr[i].removeChild(arr[i].lastChild);
+		  }
+	  }
+	  for(let i=0; i<arr.length; i++){
+	      for(let j=0; j<arrNum[i]; j++){
+	          let chess = document.createElement('img');
+	          chess.src = './chess.png';
+	  
+	          chess.style.width = '30px';
+	          chess.style.height = '30px';
+	  
+	          arr[i].appendChild(chess);
+	      }
+	  }
+  }
+  draw();
+  
+  let pick = function(area, subNum)
+  {
+	  let index = area - 1;
+	  for(let i = 0; i < subNum; i++)
+	  {
+		  arr[index].removeChild(arr[index].lastChild);
+	  }
+  }
   
   let isWin = function(n1, n2, n3, n4)                                            //判断输赢
   {
@@ -34,26 +69,31 @@
 	  
 	if(isclick){
 	isclick = false;
-    let n1 = parseInt(area1.innerHTML);
-    let n2 = parseInt(area2.innerHTML);
-	let n3 = parseInt(area3.innerHTML);
-	let n4 = parseInt(area4.innerHTML);
+    let n1 = arrNum[0];
+    let n2 = arrNum[1];
+	let n3 = arrNum[2];
+	let n4 = arrNum[3];
+	let area = 0;
     let subNum = parseInt(num.value);
     if (from.value === "1" && n1 >= subNum) 
 	{
-      area1.innerHTML = n1 - subNum;
+      arrNum[0] = n1 - subNum;
+	  area = 1;
     } 
 	else if (from.value === "2" && n2 >= subNum) 
 	{
-      area2.innerHTML = n2 - subNum;
+      arrNum[1] = n2 - subNum;
+	  area = 2;
     }
 	else if(from.value === "3" && n3 >= subNum)
 	{
-		area3.innerHTML = n3 - subNum;
+		arrNum[2] = n3 - subNum;
+		area = 3;
 	}
 	else if(from.value === "4" && n4 >= subNum)
 	{
-		area4.innerHTML = n4 - subNum;
+		arrNum[3] = n4 - subNum;
+		area = 4;
 	}
 	else if((from.value === "1" && n1 < subNum)||(from.value === "2" && n2 < subNum)||(from.value === "3" && n3 < subNum)||(from.value === "4" && n4 < subNum))
 	{
@@ -61,11 +101,12 @@
 		isclick = true;
 		return;
 	}
-	if(isWin(parseInt(area1.innerHTML), parseInt(area2.innerHTML), parseInt(area3.innerHTML), parseInt(area4.innerHTML)) === true)
+	if(isWin(arrNum[0], arrNum[1], arrNum[2], arrNum[3]) === true)
 	{
 		return;
 	}
 	playerCount++;
+	pick(area, subNum);
 	setTimeout(ai2, 3000);
 	setTimeout(function(){
 	      isclick = true;
@@ -77,50 +118,51 @@
   {
 	  let area = "0";
 	  let aaa = 0;
-	  let n1 = parseInt(area1.innerHTML);
-	  let n2 = parseInt(area2.innerHTML);
-	  let n3 = parseInt(area3.innerHTML);
-	  let n4 = parseInt(area4.innerHTML);
+	  let n1 = arrNum[0];
+	  let n2 = arrNum[1];
+	  let n3 = arrNum[2];
+	  let n4 = arrNum[3];
 	  if(n1 !== 0)
 	  {
-		  area1.innerHTML = n1 - 1;
+		  arrNum[0] = n1 - 1;
 		  area = "一";
 		  aaa = n1;
 	  }
 	  else if(n2 !== 0)
 	  {
-		  area2.innerHTML = n2 - 1;
+		  arrNum[1] = n2 - 1;
 		  area = "二";
 		  aaa = n2;
 	  }
 	  else if(n3 !== 0)
 	  {
-		  area3.innerHTML = n3 - 1;
+		  arrNum[2] = n3 - 1;
 		  area = "三";
 		  aaa = n3;
 	  }
 	  else if(n4 !== 0)
 	  {
-		  area4.innerHTML = n4 - 1;
+		  arrNum[3] = n4 - 1;
 		  area = "四";
 		  aaa = n4;
 	  }
 	  document.getElementById("action").innerHTML = '小王从第'+area+'区域中拿了一个,棋子由'+aaa+'个变为'+(aaa - 1)+'个';
-	  if(isWin(parseInt(area1.innerHTML), parseInt(area2.innerHTML), parseInt(area3.innerHTML), parseInt(area4.innerHTML)) === true)
+	  if(isWin(arrNum[0], arrNum[1], arrNum[2], arrNum[3]) === true)
 	  {
 	  	return;
 	  }
 	  playerCount++;
+	  pick(4, subNum);
   }
   
   let ai2 = function()
   {
 	  let last = 0;
 	  let areaWord;
-	  let n1 = parseInt(area1.innerHTML);
-	  let n2 = parseInt(area2.innerHTML);
-	  let n3 = parseInt(area3.innerHTML);
-	  let n4 = parseInt(area4.innerHTML);
+	  let n1 = arrNum[0];
+	  let n2 = arrNum[1];
+	  let n3 = arrNum[2];
+	  let n4 = arrNum[3];
 	  
 	  let area = findWin(n1, n2, n3, n4)[0];
 	  let takeNum = findWin(n1, n2, n3, n4)[1];                //判断能否拿了直接赢
@@ -157,35 +199,36 @@
 	  
 	  if(area === 1)
 	  {
-		  area1.innerHTML = n1 - takeNum;
+		  arrNum[0] = n1 - takeNum;
 		  areaWord = "一";
 		  last = n1;
 	  }
 	  else if(area === 2)
 	  {
-		  area2.innerHTML = n2 - takeNum;
+		  arrNum[1] = n2 - takeNum;
 		  areaWord = "二";
 		  last = n2;
 	  }
 	  else if(area === 3)
 	  {
-		  area3.innerHTML = n3 - takeNum;
+		  arrNum[2] = n3 - takeNum;
 		  areaWord = "三";
 		  last = n3;
 	  }
 	  else if(area === 4)
 	  {
-		  area4.innerHTML = n4 - takeNum;
+		  arrNum[3] = n4 - takeNum;
 		  areaWord = "四";
 		  last = n4;
 	  }
 	  
 	  document.getElementById("action").innerHTML = '小王从第'+areaWord+'区域中拿了' + takeNum +'个,棋子由'+last+'个变为'+(last - takeNum)+'个';
-	  if(isWin(parseInt(area1.innerHTML), parseInt(area2.innerHTML), parseInt(area3.innerHTML), parseInt(area4.innerHTML)) === true)
+	  if(isWin(arrNum[0], arrNum[1], arrNum[2], arrNum[3]) === true)
 	  {
 	  	return;
 	  }
 	  playerCount++;
+	  pick(area, takeNum);
   }
 
   
@@ -276,16 +319,17 @@
   
   
   let re = function(){
-	  area1.innerHTML = "1";
-	  area2.innerHTML = "3";
-	  area3.innerHTML = "5";
-	  area4.innerHTML = "7";
+	  arrNum[0] = 1;
+	  arrNum[1] = 3;
+	  arrNum[2] = 5;
+	  arrNum[3] = 7;
 	  num.value = "1";
 	  playerCount = 0;
+	  draw();
 	  document.getElementById("action").innerHTML = '到您了';
   }
   restart.addEventListener("click", re);
-  
+
   function playAudio(){
     
       var audio = document.getElementById("myAudio");
@@ -299,6 +343,15 @@
 			audio.pause();
 		}
    }
+   
+   let checkFirstClick = true;
+   document.addEventListener('click', function() {
+	   if(checkFirstClick == true)
+	   {
+		    document.getElementById('myAudio').play()
+			checkFirstClick = false;
+	   }
+   })
    
    
    
