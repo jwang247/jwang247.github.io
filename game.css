@@ -1,13 +1,13 @@
 body {
 	text-align: center;
 	position: relative;
-	/* background-image:url('222.gif');
-	background-size: cover; */
+	background-image:url('444.gif');
+	background-size: cover;
 }
 .container {
     position: fixed;
     left:50%;
-    top:50%;
+    top:30%;
     width: 400px;
     height: 400px;
     margin-left:-200px;
@@ -15,6 +15,15 @@ body {
     display: flex;
     flex-wrap: nowrap;
 	background-color: aliceblue;
+}
+
+.controller{
+	position: fixed;
+    left:50%;
+    top:56%;
+    margin-left:-100px;
+    margin-top:0px;
+	line-height: 30px;
 }
 
 .row1, .row2 {
