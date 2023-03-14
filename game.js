@@ -7,7 +7,7 @@
   let btn = document.getElementById('btn');
   let music=document.getElementById("myAudio");
   
-  let arrNum = [1, 5, 3, 7];
+  let arrNum = [1, 5, 3, 6];
   let arr = [area1, area2, area3, area4];
   
   let playerCount = 0;                                                            //玩家计数器（用来判断当前是谁在操作）
@@ -323,7 +323,7 @@
 	  arrNum[0] = 1;
 	  arrNum[1] = 5;
 	  arrNum[2] = 3;
-	  arrNum[3] = 7;
+	  arrNum[3] = 6;
 	  num.value = "1";
 	  playerCount = 0;
 	  draw();
