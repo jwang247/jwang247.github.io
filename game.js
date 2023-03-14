@@ -321,8 +321,8 @@
   
   let re = function(){
 	  arrNum[0] = 1;
-	  arrNum[1] = 3;
-	  arrNum[2] = 5;
+	  arrNum[1] = 5;
+	  arrNum[2] = 3;
 	  arrNum[3] = 7;
 	  num.value = "1";
 	  playerCount = 0;
