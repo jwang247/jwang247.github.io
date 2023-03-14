@@ -26,8 +26,9 @@
 	          let chess = document.createElement('img');
 	          chess.src = './chess.png';
 	  
-	          chess.style.width = '30px';
-	          chess.style.height = '30px';
+	          chess.style.width = '40px';
+	          chess.style.height = '40px';
+			  chess.style
 	  
 	          arr[i].appendChild(chess);
 	      }
