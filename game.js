@@ -176,9 +176,9 @@
 	  
 	  if(area === 0)                                            //没有合适的拿取对象，随便拿一个
 	  {
-		  if(n3 !== 0)
+		  if(n1 !== 0)
 		  {
-		  		  area = 3;
+		  		  area = 1;
 				  takeNum = 1;
 		  }
 		  else if(n2 !== 0)
@@ -186,9 +186,9 @@
 		  		  area = 2;
 		  		  takeNum = 1;
 		  }
-		  else if(n1 !== 0)
+		  else if(n3 !== 0)
 		  {
-		  		  area = 1;
+		  		  area = 3;
 		  		  takeNum = 1;
 		  }
 		  else if(n4 !== 0)
