@@ -6,8 +6,10 @@
   let num = document.getElementById('num');
   let btn = document.getElementById('btn');
   let music=document.getElementById("myAudio");
+  let FirstOrNot = false;
+  let color = 1;
   
-  let arrNum = [1, 5, 3, 6];
+  let arrNum = [1, 5, 3, 7];
   let arr = [area1, area2, area3, area4];
   
   let playerCount = 0;                                                            //玩家计数器（用来判断当前是谁在操作）
@@ -24,13 +26,17 @@
 	  for(let i=0; i<arr.length; i++){
 	      for(let j=0; j<arrNum[i]; j++){
 	          let chess = document.createElement('img');
-	          chess.src = './chess.png';
-	  
+			  if(color === 0)
+			  {
+				chess.src = './chess.png';
+			  }
+			  else
+			  {
+				  chess.src = './chess1.png';
+			  }
 	          chess.style.width = '40px';
 	          chess.style.height = '40px';
-			  chess.style
-	  
-	          arr[i].appendChild(chess);
+	  	      arr[i].appendChild(chess);
 	      }
 	  }
   }
@@ -176,7 +182,12 @@
 	  
 	  if(area === 0)                                            //没有合适的拿取对象，随便拿一个
 	  {
-		  if(n1 !== 0)
+		  if(findaabbbbcccccc(n1, n2, n3 ,n4))
+		  {
+			  area = 4;
+			  takeNum = 1;
+		  }
+		  else if(n1 !== 0)
 		  {
 		  		  area = 1;
 				  takeNum = 1;
@@ -207,13 +218,13 @@
 	  else if(area === 2)
 	  {
 		  arrNum[1] = n2 - takeNum;
-		  areaWord = "二";
+		  areaWord = "三";
 		  last = n2;
 	  }
 	  else if(area === 3)
 	  {
 		  arrNum[2] = n3 - takeNum;
-		  areaWord = "三";
+		  areaWord = "二";
 		  last = n3;
 	  }
 	  else if(area === 4)
@@ -284,6 +295,16 @@
 	  return Array(0, 0);
   }
   
+  let findaabbbbcccccc = function(n1, n2 ,n3 ,n4){
+	  let arr = [n1, n2, n3, n4];
+	  arr.sort((a, b) => a - b);
+	  if(arr[0] === 0 && arr[1] === 2 && arr[2] === 4 && arr[3] === 6)
+	  {
+	  		  return true;
+	  }
+	  return false;
+  }
+  
   let findAny = function(arr){
 	  arr.sort((a, b) => a - b);
 	  if(arr[0] === 0 && arr[1] === 1 && arr[2] === 1 && arr[3] === 1)
@@ -323,11 +344,25 @@
 	  arrNum[0] = 1;
 	  arrNum[1] = 5;
 	  arrNum[2] = 3;
-	  arrNum[3] = 6;
+	  arrNum[3] = 7;
 	  num.value = "1";
 	  playerCount = 0;
 	  draw();
 	  document.getElementById("action").innerHTML = '到您了';
+	  if(FirstOrNot === true)
+	  {
+		  isclick = false;
+		  setTimeout(function(){isclick=true}, 3000);
+		  document.getElementById("action").innerHTML = '小王先拿';
+		  setTimeout(function(){
+		  let area = 4;
+		  let takeNum = 1;
+		  document.getElementById("action").innerHTML = '小王从第四区域中拿了' + takeNum +'个,棋子由7个变为6个';
+		  playerCount++;
+		  pick(area, takeNum);
+		  }
+		  , 3000);	  
+	  } 
   }
   restart.addEventListener("click", re);
 
@@ -353,6 +388,32 @@
 			checkFirstClick = false;
 	   }
    })
+   
+   function changeOrder()
+   {
+	   if(FirstOrNot === true)
+	   {
+		   FirstOrNot = false;
+	   }
+	   else
+	   {
+		   FirstOrNot = true;
+	   }
+	   re();
+   }
+   
+   function changeColor()
+   {
+	   if(color === 0)
+	   {
+		   color = 1;
+	   }
+	   else
+	   {
+		   color = 0;
+	   }
+	   re();
+   }
    
    
    
