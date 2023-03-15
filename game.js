@@ -359,7 +359,6 @@
 		  let takeNum = 1;
 		  arrNum[3] = 6;
 		  document.getElementById("action").innerHTML = '小王从第四区域中拿了' + takeNum +'个,棋子由7个变为6个';
-		  playerCount++;
 		  pick(area, takeNum);
 		  }
 		  , 3000);	  
