@@ -348,7 +348,7 @@
 	  num.value = "1";
 	  playerCount = 0;
 	  draw();
-	  document.getElementById("action").innerHTML = '到您了';
+	  document.getElementById("action").innerHTML = '您先拿';
 	  if(FirstOrNot === true)
 	  {
 		  isclick = false;
