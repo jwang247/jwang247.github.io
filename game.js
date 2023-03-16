@@ -34,8 +34,8 @@
 			  {
 				  chess.src = './chess1.png';
 			  }
-	          chess.style.width = '40px';
-	          chess.style.height = '40px';
+	          chess.style.width = '38px';
+	          chess.style.height = '38px';
 	  	      arr[i].appendChild(chess);
 	      }
 	  }
