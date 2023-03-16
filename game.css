@@ -101,17 +101,6 @@ body {
 	opacity: 0.8;
 }
 
-/* #color{
-	background-color: #4CAF50;   
-	border-radius: 12px;          
-	border: 1px solid green
-	
-}
-#color:hover {
-    background-color: #b73339; 
-    color: white;
-} */
-
 #color, #restart, #playBtn, #order, #from, #btn, #num {
   display: inline-block;
   padding: 6px 9px;
@@ -133,7 +122,7 @@ body {
 
 
 #color:active, #restart:active, #playBtn:active, #order:active, #btn:active{
-  background-color: #3e8e41;
+  background-color:  #00a07a;
   box-shadow: 0 1px #666;
   transform: translateY(2px);
 }
