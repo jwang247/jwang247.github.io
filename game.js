@@ -411,8 +411,11 @@
 	   }
    }
    
+   let colorclick = true;
    function changeColor()
    {
+	   if(colorclick === true){
+		   colorclick = false;
 	   if(color === 0)
 	   {
 		   color = 1;
@@ -421,7 +424,11 @@
 	   {
 		   color = 0;
 	   }
+	   setTimeout(function(){
+	         colorclick = true;
+	       }, 3000);
 	   re();
+	   }
    }
    
    
