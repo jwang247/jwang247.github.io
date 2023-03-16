@@ -20,7 +20,7 @@ body {
 .controller{
 	position: fixed;
     left:47.5%;
-    top:65%;
+    top:60%;
     margin-left:-100px;
     margin-top:0px;
 	line-height: 35px;
@@ -29,7 +29,7 @@ body {
 #action{
 	text-align: center;
 	position: fixed;
-	left:50%;
+	left:20%;
 	top:76%;
 	margin-left:-200px;
 	margin-top:0px;
@@ -43,26 +43,26 @@ body {
 
 #area1{
 	width: 100%;
-	height: 45%;
-	background-color: rgba(255,0,0,0.0);
-	position: relative;
-	line-height：60px;
-	letter-spacing: 60px;
-	margin-top:45px;
-}
-
-#area3{
-	width: 100%;
 	height: 40%;
 	background-color: rgba(255,0,0,0.0);
 	position: relative;
 	line-height：60px;
 	letter-spacing: 60px;
-	margin-top:45px;
+	margin-top:60px;
+}
+
+#area3{
+	width: 100%;
+	height: 37%;
+	background-color: rgba(255,0,0,0.0);
+	position: relative;
+	line-height：60px;
+	letter-spacing: 60px;
+	margin-top:60px;
 }
 #area2, #area4 {
     width: 100%;
-    height: 50%;
+    height: 60%;
    background-color: rgba(255,0,0,0.0);
     position: relative;
 	line-height：60px;
@@ -112,27 +112,32 @@ body {
     color: white;
 } */
 
-#color {
+#color, #restart, #playBtn, #order, #from, #btn, #num {
   display: inline-block;
   padding: 6px 9px;
-  font-size: 9px;
+  font-size: 15px;
   cursor: pointer;
   text-align: center;   
   text-decoration: none;
   outline: none;
-  color: #fff;
-  background-color: #4CAF50;
+  color: #2047bc;
+  background-color: #22c6a4;
   border: none;
-  border-radius: 9px;
+  border-radius: 20px;
   box-shadow: 0 3px #999;
 }
 
-#color:hover {background-color: #3e8e41}
+#color:hover, #restart:hover, #playBtn:hover, #order:hover, #btn:hover, #from:hover{
+	background-color: #00a07a
+}
 
-#color:active {
+
+#color:active, #restart:active, #playBtn:active, #order:active, #btn:active{
   background-color: #3e8e41;
   box-shadow: 0 1px #666;
   transform: translateY(2px);
 }
+
+
 
 
