@@ -389,8 +389,12 @@
 	   }
    })
    
+   let orderclick = true;
    function changeOrder()
    {
+	   if(orderclick === true){
+	   if(isclick === true){
+		   orderclick = false;
 	   if(FirstOrNot === true)
 	   {
 		   FirstOrNot = false;
@@ -399,7 +403,12 @@
 	   {
 		   FirstOrNot = true;
 	   }
+	   setTimeout(function(){
+	         orderclick = true;
+	       }, 3000);
 	   re();
+	   }
+	   }
    }
    
    function changeColor()

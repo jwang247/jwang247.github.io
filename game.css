@@ -29,10 +29,11 @@ body {
 #action{
 	text-align: center;
 	position: fixed;
-	left:20%;
+	left:30%;
 	top:76%;
 	margin-left:-200px;
 	margin-top:0px;
+	color: #c88300;
 }
 
 .row1, .row2 {
@@ -77,6 +78,17 @@ body {
 	top: 20%;
 	margin-left:-350px;
 	margin-top:-290px;
+}
+
+#rules{
+	width: 350px;
+	height: 350px;
+	position: fixed;
+	left: 25%;
+	top: 50%;
+	margin-left:-310px;
+	margin-top:-250px;
+	transform: rotate(-10deg);
 }
 
 #chalkline{
@@ -126,6 +138,17 @@ body {
   box-shadow: 0 1px #666;
   transform: translateY(2px);
 }
+
+#dc{
+	width: 25px;
+	height: 25px;
+	position: fixed;
+	left: 93%;
+	top: 3%;
+	margin-left:0px;
+	margin-top:0px;
+}
+
 
 
 
