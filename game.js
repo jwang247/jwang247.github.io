@@ -7,13 +7,12 @@
   let btn = document.getElementById('btn');
   let music=document.getElementById("myAudio");
   let FirstOrNot = false;
-  let color = 1;
+  let color = 0;
   
   let arrNum = [1, 5, 3, 7];
   let arr = [area1, area2, area3, area4];
   
-  let playerCount = 0;                                                            //玩家计数器（用来判断当前是谁在操作）
-  
+  let playerCount = 0;                                                            
   
   let draw = function(){
 	  for(let i=0; i<arr.length; i++)
@@ -26,19 +25,32 @@
 	  for(let i=0; i<arr.length; i++){
 	      for(let j=0; j<arrNum[i]; j++){
 	          let chess = document.createElement('img');
-			  if(color === 0)
+			  if(color % 5 === 0)
 			  {
-				chess.src = './chess.png';
+				chess.src = './chess1.png';
 			  }
-			  else
+			  else if(color % 5 === 1)
 			  {
-				  chess.src = './chess1.png';
+				  chess.src = './chess.png';
+			  }
+			  else if(color % 5 === 2)
+			  {
+			  	  chess.src = './bitcoin.png';
+			  }
+			  else if(color % 5 === 3)
+			  {
+			  	  chess.src = './eth.png';
+			  }
+			  else if(color % 5 === 4)
+			  {
+			  	  chess.src = './dogecoin.png';
 			  }
 	          chess.style.width = '38px';
 	          chess.style.height = '38px';
 	  	      arr[i].appendChild(chess);
 	      }
 	  }
+	  Arrow();
   }
   draw();
   
@@ -51,19 +63,19 @@
 	  }
   }
   
-  let isWin = function(n1, n2, n3, n4)                                            //判断输赢
+  let isWin = function(n1, n2, n3, n4)                                            
   {
 	  if(n1 === 0 && n2 === 0 && n3 === 0 && n4 === 0)
 	  {
 	  	if(playerCount % 2 === 0)
 		{
-			alert("小王赢了");
+			alert("GPT-0 win");
 			re();
 			return true;
 		}
 		else
 		{
-			alert("你赢了");
+			alert("You win!");
 			re();
 			return true;
 		}
@@ -104,7 +116,7 @@
 	}
 	else if((from.value === "1" && n1 < subNum)||(from.value === "2" && n2 < subNum)||(from.value === "3" && n3 < subNum)||(from.value === "4" && n4 < subNum))
 	{
-		alert("所选区域剩余棋子不足，请重新选择");
+		alert("There are not enough pieces left in the selected area. Please reselect!");
 		isclick = true;
 		return;
 	}
@@ -113,6 +125,7 @@
 		return;
 	}
 	playerCount++;
+	Arrow();
 	pick(area, subNum);
 	setTimeout(ai2, 3000);
 	setTimeout(function(){
@@ -132,25 +145,25 @@
 	  if(n1 !== 0)
 	  {
 		  arrNum[0] = n1 - 1;
-		  area = "一";
+		  area = "one";
 		  aaa = n1;
 	  }
 	  else if(n2 !== 0)
 	  {
 		  arrNum[1] = n2 - 1;
-		  area = "二";
+		  area = "two";
 		  aaa = n2;
 	  }
 	  else if(n3 !== 0)
 	  {
 		  arrNum[2] = n3 - 1;
-		  area = "三";
+		  area = "three";
 		  aaa = n3;
 	  }
 	  else if(n4 !== 0)
 	  {
 		  arrNum[3] = n4 - 1;
-		  area = "四";
+		  area = "four";
 		  aaa = n4;
 	  }
 	  document.getElementById("action").innerHTML = '小王从第'+area+'区域中拿了一个,棋子由'+aaa+'个变为'+(aaa - 1)+'个';
@@ -172,15 +185,15 @@
 	  let n4 = arrNum[3];
 	  
 	  let area = findWin(n1, n2, n3, n4)[0];
-	  let takeNum = findWin(n1, n2, n3, n4)[1];                //判断能否拿了直接赢
+	  let takeNum = findWin(n1, n2, n3, n4)[1];                
 	  
-	  if(takeNum === 0)                                        //判断能否拿了达成秘籍
+	  if(takeNum === 0)                                        
 	  {
 		  area = take(n1, n2, n3, n4)[0];
 		  takeNum = take(n1, n2, n3, n4)[1];
 	  }
 	  
-	  if(area === 0)                                            //没有合适的拿取对象，随便拿一个
+	  if(area === 0)                                           
 	  {
 		  if(findaabbbbcccccc(n1, n2, n3 ,n4))
 		  {
@@ -212,34 +225,35 @@
 	  if(area === 1)
 	  {
 		  arrNum[0] = n1 - takeNum;
-		  areaWord = "一";
+		  areaWord = "one";
 		  last = n1;
 	  }
 	  else if(area === 2)
 	  {
 		  arrNum[1] = n2 - takeNum;
-		  areaWord = "三";
+		  areaWord = "three";
 		  last = n2;
 	  }
 	  else if(area === 3)
 	  {
 		  arrNum[2] = n3 - takeNum;
-		  areaWord = "二";
+		  areaWord = "two";
 		  last = n3;
 	  }
 	  else if(area === 4)
 	  {
 		  arrNum[3] = n4 - takeNum;
-		  areaWord = "四";
+		  areaWord = "four";
 		  last = n4;
 	  }
 	  
-	  document.getElementById("action").innerHTML = '小王从第'+areaWord+'区域中拿了' + takeNum +'个,棋子由'+last+'个变为'+(last - takeNum)+'个';
+	  document.getElementById("action").innerHTML = 'GPT_0 earsed ' + takeNum + ' pieces from area ' + areaWord + ', \nthe circle changed from ' + last + ' to ' + (last - takeNum);
 	  if(isWin(arrNum[0], arrNum[1], arrNum[2], arrNum[3]) === true)
 	  {
 	  	return;
 	  }
 	  playerCount++;
+	  Arrow();
 	  pick(area, takeNum);
   }
 
@@ -348,17 +362,19 @@
 	  num.value = "1";
 	  playerCount = 0;
 	  draw();
-	  document.getElementById("action").innerHTML = '您先拿';
+	  document.getElementById("action").innerHTML = 'You first';
 	  if(FirstOrNot === true)
 	  {
 		  isclick = false;
 		  setTimeout(function(){isclick=true}, 3000);
-		  document.getElementById("action").innerHTML = '小王先拿';
+		  document.getElementById("action").innerHTML = 'GPT-0 first';
+		  document.getElementById("turn").innerHTML = 'Player :\nGPT_0:<-';
 		  setTimeout(function(){
 		  let area = 4;
 		  let takeNum = 1;
 		  arrNum[3] = 6;
-		  document.getElementById("action").innerHTML = '小王从第四区域中拿了' + takeNum +'个,棋子由7个变为6个';
+		  document.getElementById("action").innerHTML = 'GPT_0 earsed 1 pieces from area four, \nthe circle changed from 7 to 6';
+		  Arrow();
 		  pick(area, takeNum);
 		  }
 		  , 3000);	  
@@ -416,18 +432,22 @@
    {
 	   if(colorclick === true){
 		   colorclick = false;
-	   if(color === 0)
-	   {
-		   color = 1;
-	   }
-	   else
-	   {
-		   color = 0;
-	   }
+	   color++;
 	   setTimeout(function(){
 	         colorclick = true;
 	       }, 3000);
 	   re();
+	   }
+   }
+   
+   function Arrow(){	   
+	   if(playerCount % 2 === 0)
+	   {
+		   document.getElementById("turn").innerHTML = 'Player :<-\nGPT_0:';
+	   }
+	   else
+	   {
+		   document.getElementById("turn").innerHTML = 'Player :\nGPT_0:<-';
 	   }
    }
    

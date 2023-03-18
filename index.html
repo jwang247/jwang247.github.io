@@ -3,14 +3,16 @@
 <head>
   <title>Boring Club</title>
   <link rel="stylesheet" type="text/css" href="game.css">
-  <link rel="icon" href="chess.png" >
+  <link rel="icon" href="boringclub.png" >
 </head>
 <body>
    <img id="blackboard" src="blackboarda.png" />
+   <img id="boringclub" src="boringclub.png" />
    <img id="chalkline" src="chalkline.png"/>
    <img id="chalkline2" src="chalkline2.png"/>
-   <img id="rules" src="rules3.png"/>
-<!--   <a href="http://www.lvyestudy.com" target="_blank"><img id="dc" src="dc.png" alt="discord"/></a> -->
+   <img id="rules" src="rules.png"/>
+  <a href="https://discord.gg/ZAE9UqDa" target="_blank"><img id="dc" src="dc.png" alt="discord"/></a>
+  <div id = "turn">Player :<-<br/>GPT_0:</div>
   <div class="container">
       <div class="row1">
           <div id="area1"></div>
@@ -23,21 +25,21 @@
   </div>
   <div class="controller">
      <select id="from">
-      <option value="1">区域1</option>  
-      <option value="3">区域2</option>
-	  <option value="2">区域3</option>
-	  <option value="4">区域4</option>
+      <option value="1">area1</option>  
+      <option value="3">area2</option>
+	  <option value="2">area3</option>
+	  <option value="4">area4</option>
     </select>
      <input type="number" class="num-input" value="1" id="num" min=1 max=7>
-    <button id="btn">确定</button>
+    <button id="btn">confirm</button>
 	<br/><br/>
-	<button id="restart">重新开始</button>
+	<button id="restart">restart</button>
 	<audio id="myAudio" loop="loop" src="music.mp3"></audio>
-	<button id="order" onclick="changeOrder()">先后手</button>
+	<button id="order" onclick="changeOrder()">change order</button>
 	<button id="playBtn" onclick="playAudio()">Music</button>
-	<button id="color" onclick="changeColor()">圆颜色</button>
+	<button id="color" onclick="changeColor()">change color</button>
   </div>
-  <div id="action">您先拿</div>
+  <div id="action">You first</div>
   <script src="game.js" charset="utf-8"></script>
 </body>
 </html>
